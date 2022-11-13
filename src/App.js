@@ -1,29 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Form from './Form'
 import Table from './Table'
 const App = () => {
-    const characters = [
-        {
-            name: 'Bharath',
-            job: 'Developer',
-        },
-        {
-            name: 'karthick',
-            job: 'Analyst',
-        },
-        {
-            name: 'Surya',
-            job: 'UI/UX designer',
-        },
-        {
-            name: 'Dennis',
-            job: 'Bartender',
-        },
-    ]
+
+    const [characters, setCharacters] = useState(
+        []
+    )
+
+    const removeCharacter = (index) => {
+        setCharacters(characters.filter((character, i) => {
+            return i !== index
+        }))
+    }
+
+    const handleSubmit = (character) => {
+        setCharacters([...characters, character])
+    }
     return (
 
         <div className='container'>
             {/* pass characters data with property name (charactersData)through to the child component */}
-            <Table charactersData={characters} />
+            <Table charactersData={characters} removeCharacter={removeCharacter} />
+
+            <Form handleSubmit={handleSubmit} />
         </div>
     )
 }
