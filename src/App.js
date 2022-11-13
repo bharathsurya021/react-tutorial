@@ -19,6 +19,7 @@ const App = () => {
     return (
 
         <div className='container'>
+            <h1>React Practice</h1>
             {/* pass characters data with property name (charactersData)through to the child component */}
             <Table charactersData={characters} removeCharacter={removeCharacter} />
 
